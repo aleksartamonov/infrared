@@ -1,9 +1,0 @@
-module simpson_module
-use constants_module
-
-double precision :: eps=1d-3 
-
-
-contains
-
-end module simpson_module
