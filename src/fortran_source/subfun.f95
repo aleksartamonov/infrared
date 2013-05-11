@@ -4,11 +4,16 @@ module prolate_subfun_module
 	use integration_module
 	real(8),parameter :: ff = 1 ! for prolate sferoids
 	double precision :: eps=1d-3 
+	real(8),parameter :: a_ice = r_v*ratio**(1d0/3d0)
+	real(8),parameter :: b_ice = r_v*ratio**(-2d0/3d0)
+	real(8),parameter :: r_C = r_V*r_of_vol
+	real(8),parameter :: a_sil = r_C*ratio**(1d0/3d0)
+	real(8),parameter :: b_sil = r_C*ratio**(-2d0/3d0)
 	real(8),parameter :: e_ice = sqrt(1 - b_ice**2/a_ice**2) ! excentricity in prolate case
 	real(8),parameter :: ratio_ice = a_ice/b_ice ! ratio of axises
 	real(8),parameter :: e_sil = sqrt(1 - b_sil**2/a_sil**2) ! excentricity in prolate case
 	real(8),parameter :: ratio_sil = a_sil/b_sil ! ratio of axises
-	real(8),parameter :: r_of_vol = a_sil**2*b_sil/a_ice**2/b_ice
+	!real(8),parameter :: r_of_vol = a_sil**2*b_sil/a_ice**2/b_ice
 	real(8) :: lambda ! wavelength of incident radiation
 	real(8) :: alpha ! angle between rotation axis and wave-vector of radiation
 	
