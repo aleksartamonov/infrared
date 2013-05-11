@@ -1,0 +1,17 @@
+# Gnuplot script file for plotting data in files "tau.dat","P-to-tau.dat"
+ # This file is called   plotter.p
+set term png
+set xlabel 'lambda'
+set ylabel 'tau'
+set xrange [3:25]
+plot('tau.dat') u 1:2 w lines  title "Tau(lambda)"
+set output "tau.ps"
+
+replot
+
+set term png
+set xlabel 'lambda'
+set ylabel 'P/tau'
+set xrange [3:25]
+plot('P-to-tau.dat') u 1:2 w lines  title "P(lambda)/tau(lambda)"
+set output "P-to-tau.ps"

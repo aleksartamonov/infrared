@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{lucy}
+L.B. Lucy.
+\newblock An iteration technique for the rectification of observed
+  distributions.
+\newblock {\em Astronomical Journal}, 79:745--754, 1974.
+
+\bibitem{cittert}
+Van~Cittert P.H.
+\newblock Zum einfluss der spaltbreite auf die intensittverteilung.
+\newblock {\em Spektralinien II, Zeitschrift f\"ur Physik}, 69:298, 1933.
+
+\bibitem{cittert-convergence}
+N.R. Hill.
+\newblock G.e. ioup.
+\newblock {\em J. Opt. Soc. Am.}, 66:487, 1976.
+
+\bibitem{jansson}
+E.K.~Plyler P.A.~Jansson, R.H.~Hunt.
+\newblock {\em J. Opt. Soc. Am.}, 60:596, 1970.
+
+\bibitem{gold}
+R.~GOLD.
+\newblock An iterative unfolding method for matrices.
+\newblock {\em Tech.Rep. ANL-6984, Argonne National Laboratory, Argonne,
+  Illinois,}, 1964.
+
+\bibitem{gold-cittert}
+{Miroslav Morh\'a\v{c}} and {Vladislav Matou\v{s}ek}.
+\newblock Multidimensional fft based positive definite gold deconvolution
+  algorithm.
+\newblock {\em Journal of Electrical Engineering}, Vol. 56, \No. 5-6:141--145,
+  2005.
+
+\bibitem{holmes}
+{T.J.~Holmes}.
+\newblock Blind deconvolution of quantum-limited imagery: maximum likelihood
+  approach.
+\newblock {\em J. Opt. Soc. Am. A}, 9:1052--1061, 1992.
+
+\end{thebibliography}

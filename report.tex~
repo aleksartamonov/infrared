@@ -1,0 +1,42 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage[dvips]{graphicx}
+\usepackage{epstopdf}
+%opening
+\title{Инфракрасные области поглощения межзвездной пыли}
+\author{Артамонов Алексей}
+
+
+
+
+\begin{document}
+\section{Введение}
+\begin{figure}
+\includegraphics[scale = 0.6]{part1.eps}
+\end{figure}
+\begin{figure}
+\includegraphics[scale = 0.4]{part2.eps}
+\end{figure}
+\begin{figure}
+\includegraphics[scale = 0.4]{part3.eps}
+\end{figure}
+
+\newpage
+Данные по показателям приломления силикатов я взял с JPDOC автор Дрейн, по показателям приломления для воды из статьи 
+Хаджинса 1993.\\
+\\
+Я рассмотрел вытянутые ледяные частицы с силикатным ядром внутри.\\
+Размеры льда $a = 1 b = 0.7$, размеры силиката $a = 0.1 b = 0.05$\\
+
+Угол под корторым распрастраняется волна - 30 градусов.\\
+
+И получил такие графики для $\tau(\lambda)$ и $P(\lambda)/\tau(\lambda)$\\
+\begin{figure}
+\includegraphics{tau.eps}
+\end{figure}
+\begin{figure}
+\includegraphics{P-to-tau.eps}
+\end{figure}
+\end{document}

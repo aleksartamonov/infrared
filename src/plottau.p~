@@ -1,0 +1,11 @@
+#! /usr/bin/gnuplot -persist
+# Gnuplot script file for plotting data in files "tau.dat","P-to-tau.dat"
+
+set terminal postscript eps enhanced
+set style line 1 lt 1 pt 7
+set xlabel 'lambda'
+set ylabel 'tau'
+set xrange [3:25]
+
+set output 'tau.eps'
+plot('tau.dat') u 1:2 w lines  title "Tau(lambda)"
