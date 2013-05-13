@@ -49,19 +49,16 @@ program extinction
 	do j = 1,6
 		lambda = 3.0
 		alpha = all_alphas(j)
-		tau0 = - Q_TE_ABS_ice(alpha,lambda,0) - Q_TE_ABS_sil(alpha,lambda,0) &
-			& - Q_TM_ABS_ice(alpha,lambda,0) - Q_TM_ABS_sil(alpha,lambda,0)&
-			& + Q_TE_SCA_ice(alpha,lambda,0) + Q_TM_SCA_ice(alpha,lambda,0)
+		tau0 = - Q_TE_ABS(alpha,lambda,0) - Q_TM_ABS(alpha,lambda,0) &
+			 & + Q_TE_SCA(alpha,lambda,0) + Q_TM_SCA(alpha,lambda,0)
 		write(*,*) "angle of incedent light (alpha) = ",alpha*180.0d0/pi," degrees"
 		do i = 0,num
 			lambda = (3.0d0 + i*(25.d0 - 3.d0)/num)*1.d0 
-			tau(i) = (- Q_TE_ABS_ice(alpha,lambda,i) - Q_TE_ABS_sil(alpha,lambda,i) &
-				& - Q_TM_ABS_ice(alpha,lambda,i) - Q_TM_ABS_sil(alpha,lambda,i)&
-				 + Q_TE_SCA_ice(alpha,lambda,i) + Q_TM_SCA_ice(alpha,lambda,i))
+			tau(i) = - Q_TE_ABS(alpha,lambda,i) - Q_TM_ABS(alpha,lambda,i) &
+			       & + Q_TE_SCA(alpha,lambda,i) + Q_TM_SCA(alpha,lambda,i)
 			!tau(i) = -Q_TE_ABS_ice(alpha,lambda,i) + Q_TM_ABS_ice(alpha,lambda,i)
-			P(i) = (+ Q_TE_ABS_ice(alpha,lambda,i) + Q_TE_ABS_sil(alpha,lambda,i) &
-				& - Q_TM_ABS_ice(alpha,lambda,i) - Q_TM_ABS_sil(alpha,lambda,i)&
-				& - Q_TE_SCA_ice(alpha,lambda,i) + Q_TM_SCA_ice(alpha,lambda,i))
+			P(i) = Q_TE_ABS(alpha,lambda,i) - Q_TM_ABS(alpha,lambda,i) &
+			   & - Q_TE_SCA(alpha,lambda,i) + Q_TM_SCA(alpha,lambda,i)
 			!P(i) =  Q_TE_SCA_ice(alpha,lambda,i) - Q_TM_SCA_ice(alpha,lambda,i)
 			write(2*k-1,*) lambda,tau(i)/tau0
 			!if(2*k+1 == 5) then

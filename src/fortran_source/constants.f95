@@ -12,7 +12,7 @@ module constants_module
 	!real(8),parameter :: b_sil = 0.01
 	real(8),parameter :: ratio = 5d0 ! ratio of a_total/ b_ total
 	real(8),parameter :: r_V = 0.1d0 ! radius of ball with equal volume as particle
-	real(8),parameter :: r_of_vol = 0.8d0 !0.5 0.8 ratio of volumes of core and core+mantle
+	real(8),parameter :: r_of_vol = 0.5d0 !0.5 0.8 ratio of volumes of core and core+mantle
 	real(8),parameter :: pi = 3.14159265359
 	
 	

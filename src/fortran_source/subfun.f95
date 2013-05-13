@@ -67,49 +67,29 @@ module prolate_subfun_module
 	
 	! //////////////////////// Q absorbtion //////////////////////////////////////////////////
 	
-	function Q_TE_ABS_ice(alpha,lambda,i)
-		real(8) alpha,lambda
+	function Q_TE_ABS(alpha,lambda,i)
+		real(8) alpha,lambda,Q_TE_ABS
 		integer i
+		
 		cksi = 2.d0*pi*a_ice/lambda
 		
-		Q_TE_ABS_ice = 4.0d0*cksi*((ksi_0**2 - ff)/(ksi_0-ff*cos(alpha)))**(0.5)*aimag(eps_ice(i))/&
-						&(3.0d0*(abs(L_1_ice*(eps_ice(i)-1.d0)+1.d0))**2)
-	
-	end function
-	
-	function Q_TE_ABS_sil(alpha,lambda,i)
-		real(8) alpha,lambda
-		integer i
-		cksi = 2.d0*pi*a_sil/lambda
-		
-		Q_TE_ABS_sil = 4.0d0*cksi*((ksi_0_sil**2 - ff)/(ksi_0_sil-ff*cos(alpha)))**(0.5)*aimag(eps_sil(i))/&
-						&(3.0*(abs(L_1_sil*(eps_sil(i)-1.d0)+1.d0))**2)
+		Q_TE_ABS = 4.0d0*cksi*((ksi_0**2 - ff)/(ksi_0-ff*cos(alpha)))**(0.5)*&
+						&aimag(alpha_pol_1(i))
+		return
 	
 	end function
 	
 	
-	
-	function Q_TM_ABS_ice(alpha,lambda,i)
-		real(8) alpha,lambda
-		real(8) Q_TM_ABS_ice
-		integer i
-		cksi = 2.d0*pi*a_ice/lambda
-		
-		Q_TM_ABS_ice = 4.0d0*cksi*((ksi_0**2 - ff)/(ksi_0-ff*cos(alpha)))**(0.5)*aimag(eps_ice(i))/(3.d0)*&
-			&((sin(alpha))**2/(abs(L_3_ice*(eps_ice(i)-1.d0)+1.d0)**2)+(cos(alpha))**2/(abs(L_1_ice*(eps_ice(i)-1.d0)+1.d0)**2))
-	end function
-	
-	function Q_TM_ABS_sil(alpha,lambda,i)
-		real(8) alpha,lambda
-		real(8) Q_TM_ABS_sil
-		integer i
-		cksi = 2.d0*pi*a_sil/lambda
-		
-		Q_TM_ABS_sil = 4.0d0*cksi*((ksi_0_sil**2 - ff)/(ksi_0_sil-ff*cos(alpha)))**(0.5)*aimag(eps_sil(i))/(3.d0)*&
-			&((sin(alpha))**2/(abs(L_3_sil*(eps_sil(i)-1.d0)+1.d0)**2)+(cos(alpha))**2/(abs(L_1_sil*(eps_sil(i)-1.d0)+1.d0)**2))
-	end function
-	
+	function Q_TM_ABS(alpha,lambda,i)
+		real(8) alpha,lambda,Q_TM_ABS
 
+		integer i
+		cksi = 2.d0*pi*a_ice/lambda
+		Q_TM_ABS = 4.0d0*cksi*((ksi_0**2 - ff)/(ksi_0-ff*cos(alpha)))**(0.5)*&
+						&aimag((sin(alpha))**2*alpha_pol_3(i) + (cos(alpha))**2*alpha_pol_1(i))
+		return
+	end function
+	
 	
 	
 	! //////////////////////// Q scattering //////////////////////////////////////////////////
@@ -137,25 +117,25 @@ module prolate_subfun_module
 	end
 	!////////////////////////////////////////////////////////
 	
-    function Q_TE_SCA_ice(alpha,lambda,i)
+    function Q_TE_SCA(alpha,lambda,i)
     	real(8) alpha,lambda,cksi
-    	real(8) Q_TE_SCA_ice
+    	real(8) Q_TE_SCA
   		real(8) integral,integral_trap
   		integer i
   		
   		call trap_2D(int_spc,0.d0,2.d0*pi,0.d0,pi,integral_trap,30,30)
   		cksi = 2.d0*pi*a_ice/lambda
   	
-    	Q_TE_SCA_ice = (cksi**4)*((ksi_0**2 - ff)**(1.5)/(ksi_0-ff*cos(alpha))**(0.5))/(9.d0*pi*ksi_0)*&
+    	Q_TE_SCA = (cksi**4)*((ksi_0**2 - ff)**(1.5)/(ksi_0-ff*cos(alpha))**(0.5))/(9.d0*pi*ksi_0)*&
     				   &(abs(alpha_pol_1(i))**2)*integral_trap
     	
     	
     	return 
     end function 
     
-    function Q_TM_SCA_ice(alpha,lambda,i)
+    function Q_TM_SCA(alpha,lambda,i)
     	real(8) alpha,lambda,cksi
-    	real(8) Q_TE_SCA_ice
+    	real(8) Q_TM_SCA
   		real(8) integral_spc,integral_sc,integral_s
   		real(8) integral_spc_trap,integral_sc_trap,integral_s_trap
   		integer i
@@ -165,7 +145,7 @@ module prolate_subfun_module
   		call trap_2D(int_s,0.d0,2.d0*pi,0.d0,pi,integral_s_trap,30,30)
   		cksi = 2.d0*pi*a_ice/lambda
   	
-    	Q_TM_SCA_ice = (cksi**4)*((ksi_0**2 - ff)**(1.5)/(ksi_0-ff*cos(alpha))**(0.5))/(9.d0*pi*ksi_0)*&
+    	Q_TM_SCA = (cksi**4)*((ksi_0**2 - ff)**(1.5)/(ksi_0-ff*cos(alpha))**(0.5))/(9.d0*pi*ksi_0)*&
     				   &(((abs(alpha_pol_1(i)))**2)*(cos(alpha)*cos(alpha))*integral_spc_trap + &
     				   &((abs(alpha_pol_3(i)))**2)*sin(alpha)*sin(alpha)*integral_s_trap + &
     				   &2*(REAL(alpha_pol_3(i)*conjg(alpha_pol_1(i))))*sin(alpha)*cos(alpha)*integral_sc_trap)
